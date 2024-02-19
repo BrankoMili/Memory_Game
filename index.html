@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Memory Game</h1>
+    <input type="text" id="input_nickname" placeholder="Enter Your Nickname" />
+
+    <section>
+      <div class="game_display">
+        <div class="icons_container"></div>
+        <button id="play_button"></button>
+      </div>
+      <div class="time_container">
+        <img
+          src="icons/other_icons/time_icon.svg"
+          class="time_stop"
+          id="time_icon"
+        />
+        <p id="time"></p>
+      </div>
+
+      <button id="stop_button">Stop</button>
+      <button id="reset_button">Reset</button>
+    </section>
+
+    <section id="nivoi_div">
+      <input type="radio" name="nivoi" value="4" id="easy" checked /><label
+        for="easy"
+        >Easy</label
+      >
+      <input type="radio" name="nivoi" value="6" id="medium" /><label
+        for="medium"
+        >Medium</label
+      >
+      <input type="radio" name="nivoi" value="8" id="hard" /><label for="hard"
+        >Hard</label
+      >
+      <input type="radio" name="nivoi" value="10" id="expert" /><label
+        for="expert"
+        >Expert</label
+      >
+    </section>
+
+    <section class="score_container">
+      <p>Results:</p>
+      <div class="buttons_score">
+        <img
+          src="icons/other_icons/racing-flag-svgrepo-com.svg"
+          alt="pedestal_image"
+          id="results_img"
+        />
+        <input
+          type="button"
+          value="Easy"
+          id="easy_display"
+          class="selected_score_button"
+        />
+        <input type="button" value="Medium" id="medium_display" />
+        <input type="button" value="Hard" id="hard_display" />
+        <input type="button" value="Expert" id="expert_display" />
+      </div>
+      <table class="table_score">
+        <tr>
+          <td>Rang</td>
+          <td>Nickname</td>
+          <td>Time</td>
+        </tr>
+      </table>
+    </section>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

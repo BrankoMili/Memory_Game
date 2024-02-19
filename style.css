@@ -1,0 +1,170 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+body {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  color: #27323a;
+}
+
+h1 {
+  margin-top: 1rem;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#input_nickname {
+  margin-top: 1rem;
+  width: 12rem;
+  height: 1.5rem;
+}
+
+#nivoi_div {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+#nivoi_div label {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+.time_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.time_container img {
+  display: inline-block;
+  width: 18px;
+  margin-right: 5px;
+}
+
+.time_stop {
+  filter: invert(27%) sepia(51%) saturate(28%) hue-rotate(30deg)
+    brightness(104%) contrast(97%);
+}
+
+.time_container p {
+  display: inline-block;
+}
+
+.icons_container img {
+  width: 85px;
+  box-shadow: 2px 2px 4px #adadad;
+  margin: 5px;
+}
+
+.icons_container img:hover {
+  box-shadow: 3px 3px 4px #919191;
+  cursor: pointer;
+}
+
+.game_display {
+  position: relative;
+}
+
+.icons_container {
+  opacity: 0.4;
+  perspective: 1000px;
+}
+
+#play_button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  background: url("icons/other_icons/play-square-svgrepo-com.svg") no-repeat;
+  background-size: 85px 85px;
+  width: 85px;
+  height: 85px;
+}
+
+#play_button:hover {
+  background: url("icons/other_icons/play-square-onhover-svgrepo-com.svg")
+    no-repeat;
+  background-size: 85px 85px;
+  cursor: pointer;
+}
+
+.display_none {
+  display: none;
+}
+
+#stop_button,
+#reset_button {
+  background-color: #e8ecf3;
+  padding: 5px 10px;
+  border: 1px solid rgb(61, 61, 60);
+  border-radius: 4px;
+}
+
+#stop_button:hover,
+#reset_button:hover {
+  cursor: pointer;
+  background-color: #79ccbf;
+}
+
+.score_container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.buttons_score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table_score {
+  margin-top: 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  width: 22rem;
+}
+
+.table_score,
+th,
+td {
+  border: 1px solid;
+}
+
+td,
+tr {
+  width: 5rem;
+}
+
+.prvi_red {
+  background-color: #e1e8e9;
+}
+
+.buttons_score input[type="button"] {
+  background-color: #e8ecf3;
+  padding: 5px 10px;
+  border: 1px solid rgb(61, 61, 60);
+  border-radius: 4px;
+  height: 25px;
+  margin-left: 5px;
+}
+
+.buttons_score input[type="button"]:hover {
+  cursor: pointer;
+  background-color: #79ccbf;
+}
+
+.selected_score_button {
+  background-color: #79ccbf !important;
+}
+
+#results_img {
+  width: 40px;
+}
