@@ -10,11 +10,13 @@
     <h1>Memory Game</h1>
     <input type="text" id="input_nickname" placeholder="Enter Your Nickname" />
 
+    <!-- Game display -->
     <section>
       <div class="game_display">
         <div class="icons_container"></div>
         <button id="play_button"></button>
       </div>
+      <!-- Game time -->
       <div class="time_container">
         <img
           src="icons/other_icons/time_icon.svg"
@@ -28,24 +30,26 @@
       <button id="reset_button">Reset</button>
     </section>
 
-    <section id="nivoi_div">
-      <input type="radio" name="nivoi" value="4" id="easy" checked /><label
+    <!-- Set game levels -->
+    <section id="set_levels_container">
+      <input type="radio" name="levels" value="4" id="easy" checked /><label
         for="easy"
         >Easy</label
       >
-      <input type="radio" name="nivoi" value="6" id="medium" /><label
+      <input type="radio" name="levels" value="6" id="medium" /><label
         for="medium"
         >Medium</label
       >
-      <input type="radio" name="nivoi" value="8" id="hard" /><label for="hard"
+      <input type="radio" name="levels" value="8" id="hard" /><label for="hard"
         >Hard</label
       >
-      <input type="radio" name="nivoi" value="10" id="expert" /><label
+      <input type="radio" name="levels" value="10" id="expert" /><label
         for="expert"
         >Expert</label
       >
     </section>
 
+    <!-- Score -->
     <section class="score_container">
       <p>Results:</p>
       <div class="buttons_score">

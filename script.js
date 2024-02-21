@@ -1,5 +1,5 @@
-import iconsFiles from "./icons.js"; // niz sa ikonicama
-let iconsArr = [...iconsFiles]; // Kopija niza sa ikonicama
+import iconsFiles from "./icons.js"; // array with icons
+let iconsArr = [...iconsFiles]; // Copy of array with icons
 
 // DOM
 const iconsContainer = document.querySelector(".icons_container");
@@ -13,12 +13,12 @@ const expertButton = document.querySelector("#expert");
 const nickName = document.querySelector("#input_nickname");
 const tableScore = document.querySelector(".table_score");
 
-const tezine = document.querySelectorAll("input[name= 'nivoi']");
+const tezine = document.querySelectorAll("input[name= 'levels']");
 let selektovanaTezina = null;
 
 let brojPogodjenih = 0;
 
-// Permutacija niza
+// Array permutation
 function randomize(niz) {
   for (let i = niz.length - 1; i >= 0; i--) {
     let z = niz[i];
@@ -28,33 +28,26 @@ function randomize(niz) {
   }
 }
 
-// Prikaz slika na stranici
+// Display of images / icons
 function prikazSlika(tezina) {
   iconsContainer.innerHTML = "";
 
-  if (tezina !== 10) {
-    for (let i = 1; i <= tezina ** 2; i++) {
-      iconsContainer.innerHTML += `<img src="icons/other_icons/stamp-svgrepo-com.svg"
-    }" id="${i - 1}" alt="image_cover"/>`;
+  for (let i = 1; i <= tezina ** 2; i++) {
+    const img = document.createElement("img");
+    img.src = "icons/other_icons/stamp-svgrepo-com.svg";
+    img.id = i - 1;
+    img.alt = "image_cover";
 
-      if (i % tezina === 0) {
-        iconsContainer.innerHTML += "<br/>";
-      }
+    if (tezina === 10) {
+      img.style = "width: 70px";
     }
-    // Druga dimenzija slika
-  } else if (tezina === 10) {
-    for (let i = 1; i <= tezina ** 2; i++) {
-      iconsContainer.innerHTML += `<img src="icons/other_icons/stamp-svgrepo-com.svg"
-    }" id="${i - 1}" alt="image_cover" style="width: 70px"/>`;
 
-      if (i % tezina === 0) {
-        iconsContainer.innerHTML += "<br/>";
-      }
-    }
+    iconsContainer.appendChild(img);
+    iconsContainer.style.gridTemplateColumns = `repeat(${tezina}, 1fr)`; // CHANGE GRID COLUMNS
   }
 }
 
-////////////   START/STOP/RESET IGRU   /////////////
+////////////   START/STOP/RESET GAME   /////////////
 let startGame = false;
 
 let timer; // Main timer
@@ -64,14 +57,14 @@ let timePassed;
 function startGameFunc() {
   timePassed = "";
   t = 0;
-  iconsArr = [...iconsFiles.slice(0, Number(selektovanaTezina.value) ** 2)]; // Redukuje se duzina niza
+  iconsArr = [...iconsFiles.slice(0, Number(selektovanaTezina.value) ** 2)]; // Reduction of array length
   randomize(iconsArr); // RANDOM NIZ
 
-  prikazSlika(Number(selektovanaTezina.value)); // Prikazuju se slicice
+  prikazSlika(Number(selektovanaTezina.value)); // Display icons
 
   if (nickName.value !== "") {
     playButton.classList.add("display_none");
-    iconsContainer.style = "opacity: 1";
+    iconsContainer.style.opacity = "1";
     if (timer === undefined) {
       timer = setInterval(() => {
         t++;
@@ -105,7 +98,7 @@ document.addEventListener("keypress", e => {
 
 function stopGame() {
   playButton.classList.remove("display_none");
-  iconsContainer.style = "opacity: 0.4";
+  iconsContainer.style.opacity = "0.4";
   clearInterval(timer);
   timer = undefined;
   startGame = false;
@@ -120,7 +113,7 @@ resetButton.addEventListener("click", () => {
   startGameFunc();
 });
 
-// Selektovana tezina igre
+// Selected difficulty level
 function izborTezine() {
   document.getElementById("time").innerHTML = "Time:";
   stopGame();
@@ -133,7 +126,7 @@ function izborTezine() {
   prikazSlika(Number(selektovanaTezina.value));
 }
 
-izborTezine(); // Pokrece se pri pokretanju stranice
+izborTezine(); // Function call when page is loaded
 
 easyButton.addEventListener("click", () => {
   izborTezine();
@@ -149,8 +142,8 @@ expertButton.addEventListener("click", () => {
 });
 
 // LOCALSTORAGE
-// Odabir prikaza tabele za razlicite tezine
-// Ako postoje podaci u localStorage pod datim key-om
+// Show game score depending on difficulty level
+// If there are data in localStorage with specific key
 let nizRezultata = [];
 function localStoragePodaci(tezinaRezultat) {
   if (localStorage.getItem(tezinaRezultat) !== null) {
@@ -206,10 +199,10 @@ expertDisplay.addEventListener("click", () => {
   expertDisplay.classList.add("selected_score_button");
 });
 
-// Ispis rezultata u tabeli
+// Set results in table and localStorage
 function ispisRezultata() {
   nizRezultata.push([nickName.value, timePassed, t]);
-  // Soriranje niza
+  // Sort array by passed time
   nizRezultata.sort(function (a, b) {
     return a[2] - b[2];
   });
@@ -247,13 +240,13 @@ iconsContainer.addEventListener("click", e => {
   if (
     startGame &&
     secondImageOpen === false &&
-    e.target.alt === "image_cover" // Proverava se da li je vec otvorena slika
+    e.target.alt === "image_cover" // Check if icon is already open
   ) {
     if (e.target.tagName === "IMG") {
       e.target.alt = "opened_image";
       e.target.src = `icons/${iconsArr[e.target.id]}.svg`; // Otvara se slika bez obzira koja je po redu
 
-      // 1. image - otvara se prva slika
+      // 1. image - open 1. icon
       if (firstImage) {
         allIcons.forEach(img => {
           if (img.src === e.target.src) {
@@ -263,13 +256,13 @@ iconsContainer.addEventListener("click", e => {
         });
         firstImage = false;
 
-        // 2. image - otvara se druga slika
+        // 2. image - open 2. icon
       } else {
         secondImageOpen = true;
         image2 = iconsArr[e.target.id];
 
         if (image1 !== image2) {
-          // Prva i druga slika nisu iste
+          // First and second icon are not similar
           setTimeout(() => {
             firstImageElement.src = "icons/other_icons/stamp-svgrepo-com.svg"; // Zatvara se prva slika
             e.target.src = "icons/other_icons/stamp-svgrepo-com.svg"; // Zatvara se druga slika
@@ -278,10 +271,11 @@ iconsContainer.addEventListener("click", e => {
             e.target.alt = "image_cover";
           }, 600);
         } else {
-          // Prva i druga slika su iste
+          // First and second icon are similar
           secondImageOpen = false;
           brojPogodjenih++;
-          // Sve pogodjeno
+
+          // Game finished
           if (brojPogodjenih === Number(selektovanaTezina.value) ** 2 / 2) {
             stopGame();
 

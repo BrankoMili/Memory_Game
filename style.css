@@ -11,49 +11,31 @@ body {
   color: #27323a;
 }
 
+/* Title */
 h1 {
   margin-top: 1rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 
+/* Nickname input */
 #input_nickname {
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   width: 12rem;
   height: 1.5rem;
 }
 
-#nivoi_div {
-  display: flex;
-  justify-content: center;
-  margin-top: 0.5rem;
+/* Game display */
+.game_display {
+  position: relative;
 }
 
-#nivoi_div label {
-  font-size: 1.2rem;
-  margin-right: 5px;
-}
-
-.time_container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.time_container img {
-  display: inline-block;
-  width: 18px;
-  margin-right: 5px;
-}
-
-.time_stop {
-  filter: invert(27%) sepia(51%) saturate(28%) hue-rotate(30deg)
-    brightness(104%) contrast(97%);
-}
-
-.time_container p {
-  display: inline-block;
+.icons_container {
+  display: grid;
+  width: fit-content;
+  margin: 0 auto;
+  opacity: 0.4;
 }
 
 .icons_container img {
@@ -65,15 +47,6 @@ h1 {
 .icons_container img:hover {
   box-shadow: 3px 3px 4px #919191;
   cursor: pointer;
-}
-
-.game_display {
-  position: relative;
-}
-
-.icons_container {
-  opacity: 0.4;
-  perspective: 1000px;
 }
 
 #play_button {
@@ -99,6 +72,30 @@ h1 {
   display: none;
 }
 
+/* Game time */
+.time_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 0.4rem;
+}
+
+.time_container img {
+  display: inline-block;
+  width: 18px;
+  margin-right: 5px;
+}
+
+.time_stop {
+  filter: invert(27%) sepia(51%) saturate(28%) hue-rotate(30deg)
+    brightness(104%) contrast(97%);
+}
+
+.time_container p {
+  display: inline-block;
+}
+
 #stop_button,
 #reset_button {
   background-color: #e8ecf3;
@@ -113,9 +110,22 @@ h1 {
   background-color: #79ccbf;
 }
 
+/* Set game levels */
+#set_levels_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+#set_levels_container label {
+  font-size: 1.2rem;
+  margin-right: 5px;
+}
+
+/* Score */
 .score_container {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .buttons_score {
@@ -167,4 +177,17 @@ tr {
 
 #results_img {
   width: 40px;
+}
+
+/* PHONE MEDIA QUERY */
+@media screen and (max-width: 500px) {
+  /* Game display */
+  .icons_container {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+
+  .icons_container img {
+    width: 78px !important;
+    margin: 3px;
+  }
 }
