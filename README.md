@@ -1,1 +1,1 @@
-Website url: https://classicmemorygame.netlify.app
+Website URL: https://classicmemorygame.netlify.app
